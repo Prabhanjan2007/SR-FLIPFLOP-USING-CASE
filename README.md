@@ -34,15 +34,53 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **Procedure**
 
-/* write all the steps invloved */
+1 Open Quartus software and create a new project.
+2 Create a new VHDL file and write the code for the SR Flip Flop.
+3 Compile the design by clicking on "Processing" -> "Start Compilation".
+4 Create a testbench file to simulate the design.
+5 Write the testbench code and add stimulus to test the SR Flip Flop.
+6 Run the simulation by clicking on "Processing" -> "Start Simulation".
+7 Observe the waveforms and verify the SR Flip Flop behavior.
+8 Analyze the results and make any necessary changes to the design.
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+```
+module de6(q, q_bar, s,r, clk, reset);
+  input s,r,clk, reset;
+  output reg q;
+  output q_bar;
+ 
+  always@(posedge clk) begin 
+    if(!reset)       
+			q <= 0;
+    else 
+  begin
+      case({s,r})       
+	     2'b00: ; 
+        2'b01:q<=1'b0;   
+        2'b10:q<=1'b1;   
+        2'b11:q<= q;   
+      endcase
+    end
+  end
+  assign q_bar = ~q;
+endmodule
+
+
+
+```
 
 **RTL LOGIC FOR FLIPFLOPS**
 
+![e6](https://github.com/user-attachments/assets/1910d4a0-fbff-49e8-8211-f8f5c2d1cc70)
+
+
 **TIMING DIGRAMS FOR FLIP FLOPS**
 
+![e66](https://github.com/user-attachments/assets/944977d2-d329-47ca-a932-990027866539)
+
+
 **RESULTS**
+
+Thus the SR flipflop using verilog and validating their functionality using their functional tables is implemented successfully.
